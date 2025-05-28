@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hexaware.restapi.DTO.PlayerDTO;
 import com.hexaware.restapi.entity.Player;
 import com.hexaware.restapi.service.PlayerServiceImpl;
 
@@ -21,12 +22,16 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/players")
 public class PlayerController {
-
 	    @Autowired
 	    private PlayerServiceImpl service;
+	    
+	    @GetMapping("/morethanvirat") //to display players who played more matches than virat
+	    public List<Player> getPlayersWithMoreMatchesThanVirat() {
+	        return service.getPlayersWithMoreMatchesThanVirat();
+	    }
 
 	    @GetMapping
-	    public List<Player> getAll() {
+	    public List<PlayerDTO> getAll() {
 	        return service.getAllPlayers();
 	    }
 
@@ -48,7 +53,7 @@ public class PlayerController {
 	    @DeleteMapping("/delete/{id}")
 	    public ResponseEntity<Void> delete(@PathVariable int id) {
 	        service.deletePlayer(id);
-	        return ResponseEntity.noContent().build();
+	        return null;
 	    }
 
 }

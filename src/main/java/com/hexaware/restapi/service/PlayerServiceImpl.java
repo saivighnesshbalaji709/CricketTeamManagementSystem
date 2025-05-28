@@ -16,15 +16,19 @@ public class PlayerServiceImpl {
 
 	@Autowired
     private PlayerRepository repo;
+	
+	public List<Player> getPlayersWithMoreMatchesThanVirat() {  //to display players who played more matches than virat
+	    return repo.PlayersWithMoreMatchesThanVirat();
+	}
 
 
-    public List<Player> getAllPlayers() {
-        return repo.findAll();
+
+    public List<PlayerDTO> getAllPlayers() {
+        return repo.getAllPlayers();
     }
 
     public Player getPlayerById(int id) {
-        return repo.findById(id)
-                   .orElseThrow(() -> new PlayerNotFoundException("No player found with the following id"+id));
+        return repo.findById(id).orElseThrow(() -> new PlayerNotFoundException("No player found with the following id "+id));
     }
 
     public Player createPlayer(Player player) {

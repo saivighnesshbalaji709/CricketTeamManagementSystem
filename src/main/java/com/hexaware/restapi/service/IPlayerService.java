@@ -6,7 +6,7 @@ import com.hexaware.restapi.DTO.PlayerDTO;
 import com.hexaware.restapi.entity.Player;
 
 public interface IPlayerService {
-	List <Player> getAllPlayers();
+	List <PlayerDTO> getAllPlayers();
     Player getPlayerById(int id);
     Player addPlayer(Player player);
     Player updatePlayer(int id, Player player);
