@@ -17,9 +17,9 @@ public class PlayerServiceImpl {
 	@Autowired
     private PlayerRepository repo;
 	
-	public List<Player> getPlayersWithMoreMatchesThanVirat() {  //to display players who played more matches than virat
-	    return repo.PlayersWithMoreMatchesThanVirat();
-	}
+	public List<Player> getPlayersWithMoreMatchesThan(String playerName) {
+	    return repo.findPlayersWithMoreMatchesThan(playerName);
+	} //to show players who played more matches than the given player
 
 
 

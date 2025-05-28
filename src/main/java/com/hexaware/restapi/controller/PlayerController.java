@@ -25,10 +25,11 @@ public class PlayerController {
 	    @Autowired
 	    private PlayerServiceImpl service;
 	    
-	    @GetMapping("/morethanvirat") //to display players who played more matches than virat
-	    public List<Player> getPlayersWithMoreMatchesThanVirat() {
-	        return service.getPlayersWithMoreMatchesThanVirat();
+	    @GetMapping("/more-matches-than/{playerName}")
+	    public List<Player> getPlayersWithMoreMatchesThan(@PathVariable String playerName) {
+	        return service.getPlayersWithMoreMatchesThan(playerName); //to show players who played more matches than the given player
 	    }
+
 
 	    @GetMapping
 	    public List<PlayerDTO> getAll() {

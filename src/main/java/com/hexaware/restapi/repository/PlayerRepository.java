@@ -13,8 +13,9 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
 	@Query(value = "select playerid,name,jersey_number,role from player_table", nativeQuery = true)
 	public  List<PlayerDTO>  getAllPlayers();
 	
-	@Query(value = "select * from player_table where total_matches > (select total_matches from player_table where name = 'Virat Kohli')", nativeQuery = true)
-	List<Player> PlayersWithMoreMatchesThanVirat();
+	@Query(value = "select * from player_table where total_matches > (select total_matches from player_table where name = :playername)", nativeQuery = true)
+	List<Player> findPlayersWithMoreMatchesThan(@org.springframework.data.repository.query.Param("playername") String playername);
+
 
 	
 }
