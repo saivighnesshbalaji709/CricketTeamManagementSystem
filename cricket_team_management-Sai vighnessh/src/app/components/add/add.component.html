@@ -1,0 +1,67 @@
+
+<h1>Add Player Page</h1>
+
+
+
+<form #playerForm="ngForm" method="post" class="container col-md-6" (ngSubmit)="addplayer(playerForm.value)">
+
+
+  <!-- Player Name -->
+  <div class="form-group">
+    <label>Player Name:</label>
+    <input type="text" class="form-control" name="playerName" required ngModel #nameCtrl="ngModel">
+    <span style="color: red;" *ngIf="nameCtrl.touched && nameCtrl.invalid">Name is required</span>
+  </div>
+
+  <!-- Jersey Number -->
+  <div class="form-group">
+    <label>Jersey Number:</label>
+    <input type="number" class="form-control" name="jerseyNumber" required ngModel #jerseyCtrl="ngModel">
+    <span style="color: red;" *ngIf="jerseyCtrl.touched && jerseyCtrl.invalid">Jersey number is required</span>
+  </div>
+
+  <!-- Role -->
+  <div class="form-group">
+    <label>Role:</label>
+    <select class="form-control" name="role" required ngModel #roleCtrl="ngModel">
+      <option value="">Select Role</option>
+      <option value="batsman">Batsman</option>
+      <option value="bowler">Bowler</option>
+      <option value="keeper">Keeper</option>
+      <option value="all rounder">All Rounder</option>
+    </select>
+    <span style="color: red;" *ngIf="roleCtrl.touched && roleCtrl.invalid">Role is required</span>
+  </div>
+
+  <!-- Total Matches -->
+  <div class="form-group">
+    <label>Total Matches:</label>
+    <input type="number" class="form-control" name="totalMatches" required ngModel #matchesCtrl="ngModel">
+    <span style="color: red;" *ngIf="matchesCtrl.touched && matchesCtrl.invalid">Total matches is required</span>
+  </div>
+
+  <!-- Team Name -->
+  <div class="form-group">
+    <label>Team Name:</label>
+    <input type="text" class="form-control" name="teamName" required ngModel #teamCtrl="ngModel">
+    <span style="color: red;" *ngIf="teamCtrl.touched && teamCtrl.invalid">Team name is required</span>
+  </div>
+
+  <!-- Country -->
+  <div class="form-group">
+    <label>Country:</label>
+    <input type="text" class="form-control" name="country" required ngModel #countryCtrl="ngModel">
+    <span style="color: red;" *ngIf="countryCtrl.touched && countryCtrl.invalid">Country is required</span>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label>Description:</label>
+    <textarea class="form-control" name="description" required ngModel #descCtrl="ngModel"></textarea>
+    <span style="color: red;" *ngIf="descCtrl.touched && descCtrl.invalid">Description is required</span>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="playerForm.invalid">Submit</button>
+</form>
+
+ 

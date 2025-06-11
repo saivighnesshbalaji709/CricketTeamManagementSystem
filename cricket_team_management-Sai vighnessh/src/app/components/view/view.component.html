@@ -1,0 +1,29 @@
+<h1>View Players</h1>
+
+<div class="container mt-4">
+  <h2>All Players</h2>
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Jersey No</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.playerID }}</td>
+        <td><input [(ngModel)]="player.playerName" class="form-control" /></td>
+        <td><input [(ngModel)]="player.jerseyNumber" class="form-control" /></td>
+        <td><input [(ngModel)]="player.role" class="form-control" /></td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deletePlayer(player.playerID!)">Delete</button>
+          
+          <button class="btn btn-success btn-sm" (click)="updatePlayer(player.playerID!, player)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
